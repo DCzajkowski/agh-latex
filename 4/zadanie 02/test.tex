@@ -1,0 +1,30 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[polish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{anysize}
+\usepackage{tikz}
+% \usepackage{enumerate}
+% \usepackage{times}
+
+%\marginsize{left}{right}{top}{bottom}
+\marginsize{3cm}{3cm}{3cm}{3cm}
+\sloppy
+
+\begin{document}
+    \section*{Testowy diagram blokowy.}
+
+    Testowy diagram blokowy.
+
+
+    \begin{figure}[!htb]
+        \centerline
+        \begin{tikzpicture}
+            \node at (0,0) {\includegraphics[scale=1]{f1b}};
+            \node at (5.6,-1.5) {$f(x) = \sin(x)$};
+        \end{tikzpicture}
+        \caption{Wykresy funkcji}
+        \label{fig:funkcje}
+    \end{figure}
+\end{document}

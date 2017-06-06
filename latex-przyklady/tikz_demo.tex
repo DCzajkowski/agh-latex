@@ -1,0 +1,163 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[polish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{times}
+\usepackage{graphicx}
+\usepackage{anysize}
+\usepackage{amsmath}
+\usepackage{color}
+\usepackage{tikz}
+\usetikzlibrary{calc,through,backgrounds,positioning}
+\usepgflibrary{arrows}
+
+%\marginsize{left}{right}{top}{bottom}
+\marginsize{2.5cm}{2.5cm}{2.5cm}{2.5cm}
+
+\definecolor{darkred}{rgb}{0.9,0,0}
+\definecolor{grey}{rgb}{0.4,0.4,0.4}
+\definecolor{orange}{rgb}{1,0.6,0.05}
+\definecolor{darkgreen}{rgb}{0.2,0.5,0.05}
+
+
+
+\begin{document}
+
+\section{Pakiet tikz czyli nieco inne rysowanie}
+
+\begin{figure}[!ht]
+\begin{center}
+\begin{tikzpicture}
+\draw (1,0) -- (0,1) -- (-1,0) -- (0,-1) -- cycle;
+\draw[dashed,draw=red] (2,0) -- (1,1) -- (0,0) -- (1,-1) -- cycle;
+\node at (1.3,0.7) {\color{blue}$\int\limits_{-\infty}^{\infty}\frac{-1}{x^2}dx$};
+\end{tikzpicture}
+\end{center}
+\caption{Pierwszy rysunek z użyciem tikz}
+\label{fig:tikz1}
+\end{figure}
+
+\begin{figure}[!ht]
+\begin{center}
+\begin{tikzpicture}
+\draw[step=1cm,gray,very thin] (-1.5,-1.5) grid (3.5,3.5);
+\draw [-latex] (-1.5,0) -- (3.5,0);
+\draw [-latex] (0,-1.5) -- (0,3.5);
+\coordinate (A) at (0,0);
+\coordinate (B) at (30:2);
+\coordinate (C) at (65:2.4);
+\draw (A) -- (B) -- (C) -- cycle;
+\node at (A) [below left=2pt] {$A$};
+\node at (B) [right=2pt] {$B$};
+\node at (C) [above=2pt] {$C$};
+\draw[fill=green!20!white] (0,0) -- (30:0.9) arc (30:65:0.9) -- cycle; 
+\node at (0.35,0.4) {$\alpha$};
+\end{tikzpicture}
+\end{center}
+\caption{Rysunek 2}
+\label{fig:tikz2}
+\end{figure}
+
+\begin{figure}[!ht]
+\begin{center}
+\begin{tikzpicture}[inner sep=1pt,node distance=1mm]
+\fill [fill=red!20!white] (-0.7,0.15) rectangle (0.7,0.3);
+\fill [fill=red!60!white] (1.3,0.15) rectangle (1.45,0.3);
+\fill [fill=red!20!white] (1.3,2.0) rectangle (1.45,0.7);
+\node (A) at (0,0) [shape=rectangle,minimum width=1.6cm,minimum height=1cm,
+           draw=black,label=left:$m$,label=above:$n$] {$A$};
+\node (AB) [shape=rectangle,minimum width=2cm,minimum height=1cm,draw=black,right=of A] {$AB$};
+\node (B) [shape=rectangle,minimum width=2cm,minimum height=1.5cm,
+           draw=black,above=of AB,label=left:$n$,label=above:$p$] {$B$};
+\end{tikzpicture}
+\end{center}
+\caption{Mnożenie macierzy -- schemat Falka}
+\label{fig:falk}
+\end{figure}
+
+\begin{figure}[!ht]
+\begin{center}
+\begin{tikzpicture}[scale=0.8,inner sep=0.4mm]
+\draw[step=1cm,draw=grey!30!white,very thin] (-0.5,-0.5) grid (5.5,3.5);
+\filldraw [draw=red,fill=red!20!white] (0,0) -- ++(0,2) -- ++(2,0) 
+ -- ++(0,-2) -- cycle;
+\filldraw [draw=green,fill=green!20!white] (0,0) 
+-- (intersection of 0,0--40:3 and 0,2--4,2) coordinate (t) -- ++(2,0) 
+-- (2,0) -- cycle;
+\draw[thick] [->] (-0.5,0) -- (5.5,0) node [right=3pt] {$x$};
+\draw[thick] [->] (0,-0.5) -- (0,3.5) node [left=3pt] {$y$};
+\node at (0,0.4) [right] {$\alpha$};
+\draw (40:0.9) arc (40:90:0.9);
+\draw[<->] (0,2.3) -- node [fill=white] {$y\,{\rm tg} \alpha$} ( $ (t) + (0,0.3) $);
+\end{tikzpicture}
+\end{center}
+\caption{Nachylenie względem osi $x$ i $y$}
+\label{fig:nachylenie}
+\end{figure}
+
+\begin{figure}[!ht]
+\begin{center}
+\begin{tikzpicture}
+\draw [->] (0,0,-3) -- (0,0,2) node [below] {$z$};
+\coordinate (A) at (2,2,2);
+\coordinate (B) at (2,2,-1);
+\filldraw [draw=red,fill=red!20!white] 
+  (B) -- ++(0,-1,0) -- ++(-1,0,0) -- ++(0,1,0) -- cycle
+  (B) -- ++(0,-1,0) -- ++(0,0,-1) -- ++(0,1,0) -- cycle
+  (B) -- ++(-1,0,0) -- ++(0,0,-1) -- ++(1,0,0) -- cycle;
+
+\fill[fill=green!20!white, opacity=0.5] (0,0,0) -- (0,3,0) 
+  -- (3,3,0) -- (3,0,0);
+\draw [->] (-0.5,0,0) -- (3.5,0,0) node [right] {$x$};
+\draw [->] (0,-0.5,0) -- (0,3.5,0) node [above] {$y$};
+\filldraw [draw=red,fill=red!20!white] 
+  (A) -- ++(0,-1,0) -- ++(-1,0,0) -- ++(0,1,0) -- cycle
+  (A) -- ++(0,-1,0) -- ++(0,0,-1) -- ++(0,1,0) -- cycle
+  (A) -- ++(-1,0,0) -- ++(0,0,-1) -- ++(1,0,0) -- cycle;
+
+\end{tikzpicture}
+\end{center}
+\caption{Symetria względem płaszczyzny}
+\label{fig:symetria}
+\end{figure}
+
+\begin{figure}[!ht]
+\begin{center}
+\begin{tikzpicture}[scale=1, inner sep=0.4mm]
+\draw [->] (0,0,0) -- (3.5,0,0) node [right] {$x$};
+\draw [->] (0,0,0) -- (0,3.5,0) node [above] {$y$};
+\draw [->] (0,0,0) -- (0,0,3.5) node [below] {$z$};
+\draw [draw=green] (1,2,0) -- (1,2,6.5);
+\filldraw [draw=red,fill=red!30!white,opacity=0.5] (3,0,0) --
+(2,2,1) -- (2,0,3) -- cycle;
+\filldraw [draw=red,fill=red!30!white,opacity=0.5] (3.73,2.73,0) --
+(1.5,2.86,1) -- (3.23,1.87,3) -- cycle;
+\draw [dashed] 
+(1,2,3) -- (2,0,3) (1,2,3) -- (3.23,1.87,3)
+(1,2,0) -- (3,0,0) (1,2,0) -- (3.73,2.73,0)
+(1,2,1) -- (2,2,1) (1,2,1) -- (1.5,2.86,1);
+\node at (1,2,3) [circle,fill=grey] {};
+\node at (1,2,0) [circle,fill=grey] {};
+\node at (1,2,1) [circle,fill=grey] {};
+\node at (2,0,3) [circle,fill=grey] {};
+\node at (3,0,0) [circle,fill=grey] {};
+\node at (2,2,1) [circle,fill=grey] {};
+\node at (3.23,1.87,3) [circle,fill=grey] {};
+\node at (3.73,2.73,0) [circle,fill=grey] {};
+\node at (1.5,2.86,1) [circle,fill=grey] {};
+
+\node at (2,0,3) [below=2pt] {$C_1$};
+\node at (3,0,0) [below right=2pt] {$A_1$};
+\node at (2,2,1) [above right=2pt] {$B_1$};
+\node at (3.23,1.87,3) [below=2pt] {$C_2$};
+\node at (3.73,2.73,0) [right=2pt] {$A_2$};
+\node at (1.5,2.86,1) [above=2pt] {$B_2$};
+\end{tikzpicture}
+\end{center}
+\caption{Przykład obrotu}
+\label{fig:obrot}
+\end{figure}
+
+
+
+\end{document}

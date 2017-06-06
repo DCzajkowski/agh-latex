@@ -1,0 +1,59 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[pdftex]{graphicx}
+\usepackage{times}
+\usepackage{amsmath}
+\usepackage{setspace}
+\usepackage{wasysym}
+\usepackage{MnSymbol}
+
+\onehalfspacing
+
+\begin{document}
+\noindent \small
+relations in the Coulomb gauge, we consider in the Lorentz gauge as independent fields electrons and the transverse photons. Consequently we keep the canonical equal time anti commutation (2.6c) for the electrons and (3.9) for the transverse part of $A^L\!_\mu$. Then in the Lorentz gauge we get the following equation of motion
+\begin{equation}
+  \label{4.2a}
+  \left(i\gamma^\mu\frac{\partial}{\partial x^\mu} - m_e \right)\psi_e(x) = \eta(x)=e\gamma^\mu A^L\!_\mu(x)\psi_e(x)
+\end{equation}
+\begin{equation}
+  \label{4.2b}
+  \square_x\left(A^L\right)^{tr}_i(x) = J^{tr}_i(x) = J_i(x) - \frac{\partial}{\partial x^i}\frac{\partial J^k (x)}{\partial x^k};\quad i = 1,2,3
+\end{equation}
+\indent and the zeroth and longitudinal components of the photon fields are determined through the corresponding sources as
+\begin{equation}
+\label{4.2c}
+\left(A^L\right)^l_i(x) = \square^{-1}-xJ^l_i(x);\quad J^l_i(x) = e\frac{\partial}{\partial x^i}\frac{\partial\left[\bar{\psi}_e(x)\gamma_k\psi_e(x)\right]}{\partial x_k}
+\end{equation}
+\begin{equation}
+\label{4.2d}
+A^L\!_o(x) = \square^{-1}_xJ_o(x);\quad J_o(x)=e\bar{\psi}_e(x)\gamma_o\psi_e(x),
+\end{equation}
+where
+\begin{equation}
+\label{4.3}
+\left(A^L\right)^{tr}_i(x) = A^L\!_i(x) - \frac{\partial}{\partial x_i}\frac{\partial A^L\!_k(x)}{\partial x_k};\quad \left(A^L\right)^l_i(x) = \frac{\partial}{\partial x^i}\frac{\partial \left(A^L\right)_k(x)}{\partial x_k}
+\end{equation}
+The gauge condition (4.1) allows to redefine $\left(A^L\right)^l_i$ through the $A^L\!o$
+\begin{equation}
+\label{4.4}
+\left(A^L\right)^l_i(x) = \frac{\partial}{\partial x^i}\frac{\partial A^L\!_o(x)}{\partial x^o}
+\end{equation}
+\indent Thus we have two auxiliary fields $\left(A^L\right)^l_i$ and $A^L\!o$in the Lorentz gauge (4.1). Both of these auxiliary fields are determined through the $J_o$ according to (\ref{4.2c},\ref{4.2d}) and (\ref{4.4}).
+
+The first part of the equal time commutator (2.7a) $Y^l = Y^L_I - Y^L_{II}$ in the Lorentz gauge
+\begin{equation}
+\label{4.5}
+Y^L_I = e\bar{u}\left(\boldsymbol{p}'_e\right)\gamma^\mu<out;\boldsymbol{p}'_N|A^L\!_\mu(0)\Bigg\{\psi_e(0),b^+_{\boldsymbol{p_e}}(0)\Bigg\}|\boldsymbol{p}_N;in\; >=e\bar{u}\left(\boldsymbol{p'_e}\right)\gamma^\mu u\left(\boldsymbol{p_e}\right)<out;\boldsymbol{p}'_N|A^L\!_\mu(0)|\boldsymbol{p}_N;in>
+\end{equation}
+reproduces exactly the Born term $V_{OPE}$ (2.7b).
+
+The next part of the equal-time commutators (2.7a)
+\begin{equation}
+\label{4.6}
+Y^L_{II} = -e\bar{u}\left(\boldsymbol{p'_e}\right)\gamma^{\mu=0,3} < out; \boldsymbol{p}'_N |\Bigg[A^L\!{\mu=0,3}(0),b^+_{\boldsymbol{p_e}}(0)\Bigg]\psi_e(0)|\boldsymbol{p}_N;in>
+\end{equation}
+is more complicated than $Y^C_{II}$ (3.10c) because $A^L\!_{\mu=0,3}$ in (\ref{4.2d}) contains additional integration over the $x'_o$ of the sources $J_o(x')$.
+\end{document}

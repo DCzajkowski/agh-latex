@@ -1,0 +1,31 @@
+\documentclass[a4paper,12pt,twoside]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{anysize}
+\usepackage{enumerate}
+\usepackage{amssymb}
+\usepackage[polish]{babel}
+\usepackage{makeidx}
+
+%\marginsize{left}{right}{top}{bottom}
+\marginsize{2.5cm}{2.5cm}{2.5cm}{2.5cm}
+
+\makeindex
+
+\begin{document}
+
+
+
+\section{Indeks haseł}
+
+Najczęściej spotykaną w literaturze klasą sieci Petriego są {\em sieci miejsc i przejść}.\index{siecx@sieć!miejsc i przejść}\index{PTsiecx@PT-sieć} Są one podstawowym językiem modelowania współbieżności i~synchronizacji procesów dyskretnych, a~także stanowią (stanowiły) punkt wyjścia do definiowania wielu innych klas sieci. Najistotniejsze cechy tej klasy sieci to prosta struktura oraz duża różnorodność i~łatwość stosowania metod analizy.
+
+PT-sieć jest definiowana jako piątka $\mathcal{N} = (P,T,A,W,M_0)$. Symbole $P$, $T$ i~$A$ oznaczają odpowiednio zbiór miejsc, przejść i~łuków sieci\index{zbiór!miejsc}\index{miejsce}\index{przejście}\index{zbiór!przejść}\index{tranzycja}\index{zbiór!lxuków sieci@łuków sieci}. 
+Funkcja $W\colon A\to \mathbb{N}$ jest {\em funkcją wag łuków},\index{funkcja!wag lxukow@wag łuków}\index{waga łuku} przyporządkowującą każdemu łukowi sieci liczbę naturalną, interpretowaną jako jego {\em waga} ({\em krotność}). Wagi łuków reprezentowane są graficznie za pomocą etykiet umieszczanych przy odpowiednich łukach. Przy opisie sieci pomijane są wagi równe 1. Funkcja $M_0\colon P \to \mathbb{N} \cup \{0\}$ określa znakowanie początkowe,\index{znakowanie!początkowe} tzn. początkowy rozkład {\em znaczników} (żetonów) w~miejscach sieci. Znaczniki reprezentowane są graficznie za pomocą kropek umieszczanych wewnątrz elips symbolizujących miejsca sieci lub -- w~sytuacji gdy liczba znaczników jest duża -- za pomocą etykiet zawierających informację o~liczbie znaczników. 
+
+
+\printindex
+
+\end{document}
+

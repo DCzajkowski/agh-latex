@@ -1,0 +1,77 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[polish]{babel}
+\usepackage{graphicx}
+\usepackage[latin2]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{times}
+\usepackage{enumerate}
+\usepackage{amsfonts}
+%\usepackage{amssymb}
+
+\usepackage{anysize}
+\marginsize{2cm}{2cm}{2cm}{2cm}
+\sloppy
+
+
+
+\title{Sieci Petriego -- przyk³ad u¿ycia BibTeXa}
+\author{Marcin Szpyrka}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{Wprowadzenie}
+\label{sec:wprowadzenie}
+
+Niniejszy artyku³ zawiera elementarne wiadomo¶ci na temat sieci Petriego~\cite{Pet65,PetriNetsWorld}. Stanowi on demostracjê korzystania z bibliografii w formacie BibTeX.
+
+
+%---------------------------------------------------------------------------
+
+\section{Sieci Petriego}
+\label{sec:sieciPetriego}
+
+Sieci Petriego s± graficznym i~matematycznym narzêdziem modelowania, stosowanym w~wielu ró¿nych dziedzinach naukowych. Naturalnym zjawiskiem w~sieciach Petriego jest wspó³bie¿no¶æ wykonywanych akcji, st±d te¿ s± one najczê¶ciej postrzegane jako narzêdzie do modelowania systemów wspó³bie¿nych (\cite{Jen, Sta87}). Sieci, których definicja zosta³a rozbudowana o~model czasu, mog± byæ stosowane do modelowania systemów czasu rzeczywistego (\cite{Che02}). 
+
+Rozwa¿any formalizm zawdziêcza swój pocz±tek pracy naukowej Carla A. Petriego opublikowanej w~roku 1962 (\cite{Pet65}).  W~wyniku ponadczterdziestoletniego rozwoju tej teorii powsta³o wiele ró¿nych klas sieci i rozszerzono zakres ich zastosowañ. 
+
+Sieæ Petriego, niezale¿nie od klasy, przedstawiana jest jako graf dwudzielny. Mo¿e ona mieæ strukturê hierarchiczn±, co znacznie u³atwia modelowanie z³o¿onych systemów. Sieæ Petriego jest nie tylko graficzn± reprezentacj± danego systemu, ale -- ze wzglêdu na mo¿liwo¶æ symulacji jej pracy (najczê¶ciej wspomaganej przez odpowiednie narzêdzia komputerowe) -- staje siê jego wirtualnym prototypem. Najistotniejszym elementem pozostaje jednak bardzo rozbudowana teoria, umo¿liwiaj±ca formaln± analizê takiego modelu.
+
+
+Najczê¶ciej spotykan± w literaturze klas± sieci Petriego s± {\em sieci miejsc i przej¶æ} ({\em PT-sieci -- Place Transition nets} \cite{Mur89, Rei88, Szp08-WNT}). S± one podstawowym jêzykiem modelowania wspó³bie¿no¶ci i~synchronizacji procesów dyskretnych, a~tak¿e stanowi± (stanowi³y) punkt wyj¶cia do definiowania wielu innych klas sieci. Najistotniejsze cechy tej klasy sieci to prosta struktura oraz du¿a ró¿norodno¶æ i~³atwo¶æ stosowania metod analizy.
+
+PT-sieæ jest definiowana jako pi±tka $\mathcal{N} = (P,T,A,W,M_0)$. Symbole $P$, $T$ i~$A$ oznaczaj± odpowiednio zbiór miejsc, przej¶æ i~³uków sieci. 
+Funkcja $W\colon A\to \mathbb{N}$ jest {\em funkcj± wag ³uków}, przyporz±dkowuj±c± ka¿demu ³ukowi sieci liczbê naturaln±, interpretowan± jako jego {\em waga} ({\em krotno¶æ}). Wagi ³uków reprezentowane s± graficznie za pomoc± etykiet umieszczanych przy odpowiednich ³ukach. Przy opisie sieci pomijane s± wagi równe 1. Funkcja $M_0\colon P \to \mathbb{N} \cup \{0\}$ okre¶la znakowanie pocz±tkowe, tzn. pocz±tkowy rozk³ad {\em znaczników} (¿etonów) w~miejscach sieci. Znaczniki reprezentowane s± graficznie za pomoc± kropek umieszczanych wewn±trz elips symbolizuj±cych miejsca sieci lub -- w~sytuacji gdy liczba znaczników jest du¿a -- za pomoc± etykiet zawieraj±cych informacjê o~liczbie znaczników. Przyk³ad sieci miejsc i~przej¶æ przedstawiono na rysunku~\ref{fig:ptSiec}.
+
+\begin{figure}[!htb]
+\centerline{\includegraphics[width=4.5cm,angle=270]{siec4}}
+\caption{Przyk³ad sieci miejsc i przej¶æ}
+\label{fig:ptSiec}
+\end{figure}
+
+Znakowanie sieci zapisywane jest zazwyczaj w~postaci wektora, na przyk³ad: $M_0 = (1,2,0,1,2,1)$ w~przypadku sieci z~rysunku~\ref{fig:ptSiec}. Jest ono interpretowane jako stan modelowanego systemu i~ulega zmianie w~wyniku tzw. {\em wykonywania przej¶æ}. Przej¶cie $t\in T$ jest {\em aktywne} przy znakowaniu $M$, je¿eli ka¿de z~jego miejsc wej¶ciowych zawiera co najmniej tyle znaczników, ile wynosi waga ³uku prowadz±cego od tego miejsca do przej¶cia $t$. Je¿eli przej¶cie jest aktywne, to mo¿e zostaæ wykonane, w~wyniku czego usuwane s± znaczniki z~jego miejsc wej¶ciowych, a~dodawane s± znaczniki do jego miejsc wyj¶ciowych. Liczbê dodawanych i~usuwanych znaczników okre¶laj± wagi odpowiednich ³uków. 
+
+W~przypadku sieci z~rysunku~\ref{fig:ptSiec}, przy znakowaniu pocz±tkowym aktywne s± przej¶cia $t1$, $t2$, $t4$, $t6$ i~$t7$. Wykonanie ka¿dego z~nich prowadzi odpowiednio do znakowañ $M_1=(1,3,0,1,2,1)$, $M_2=(1,1,1,1,2,1)$, $M_4=(1,2,0,0,3,1)$, $M_6=(3,2,0,1,2,0)$ i~$M_7=(1,1,0,3,3,0)$. Przej¶cia $t3$ i~$t5$ nie s± aktywne, poniewa¿, odpowiednio: miejsce $p3$ jest puste, a~miejsce $p5$ zawiera zbyt ma³o znaczników (wymagane s± co najmniej trzy znaczniki).
+
+Rozszerzenie sieci miejsc i~przej¶æ o~model czasu pozwala na stosowanie ich do modelowania systemów czasu rzeczywistego. Istnieje wiele ró¿nych klas sieci Petriego, które zosta³y rozbudowane o~model czasu, ciekawe ich porównanie mo¿na znale¼æ w~pracy~\cite{SaSzm02}. 
+Do najczê¶ciej stosowanych zaliczane s± {\em proste sieci czasowe} (\cite{BuySlo94}) i~{\em przedzia³owe sieci czasowe} (\cite{MerFa76}). 
+
+W~pierwszym przypadku, ka¿de z~przej¶æ sieci ma przypisan± nieujemn± liczbê wymiern± $\sigma(t)$ i~je¿eli przej¶cie $t$ staje siê aktywne, to musi zostaæ wykonane dok³adnie $\sigma(t)$ jednostek czasu pó¼niej, chyba ¿e przestanie byæ w~tym czasie aktywne w~wyniku wykonania innego przej¶cia. 
+
+W~przypadku sieci przedzia³owych, ka¿de z~przej¶æ ma przypisane dwie warto¶ci $\sigma_{min}(t)$ i~$\sigma_{max}(t)$. Warto¶æ $\sigma_{min}(t)$ okre¶la minimalny czas, jaki musi up³yn±æ od momentu aktywowania przej¶cia $t$ do jego wykonania, a~$\sigma_{max}(t)$ okre¶la maksymalny czas, przez jaki przej¶cie $t$ mo¿e czekaæ na wykonanie. Druga z~tych liczb mo¿e byæ liczb± niew³a¶ciw± ($+\infty$).\cite{Che02}
+
+
+Dok³adniejszy opis wszystkich wymienionych klas sieci Petriego, a~tak¿e przegl±d metod ich analizy mo¿na znale¼æ w~monografii~\cite{Szp08-WNT}.
+
+%---------------------------------------------------------------------------
+
+
+
+\renewcommand{\refname}{Literatura}
+
+\bibliographystyle{plain} %alpha
+\bibliography{zrodla}
+
+\end{document}

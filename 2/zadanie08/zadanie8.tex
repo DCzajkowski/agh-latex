@@ -1,0 +1,116 @@
+\documentclass[a4paper,11pt,twoside]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amssymb}
+\usepackage[polish]{babel}
+\usepackage{amsthm}
+\usepackage{times}
+\usepackage{anysize}
+% \usepackage{enumerate}
+
+\marginsize{1.5cm}{1.5cm}{1.5cm}{1.5cm}
+\sloppy
+
+\theoremstyle{definition}
+\newtheorem{df}{Definicja}
+\newtheorem{tw}{Twierdzenie}
+
+
+\begin{document}
+
+\section*{Algebra Boole'a}
+
+Metoda wnioskowania boolowskiego pochodzi z 1847 roku od Boole'a i~była rozwijana przez innych matematyków końca XIX-go wieku. Idee te zostały ponownie odkryte w~kontekście nowych zastosowań w~naukach przyrodniczych końca XX-go wieku.
+
+\begin{df}
+Niech $X$ będzie dowolnym zbiorem, a~$n$ dowolną, ustaloną liczbą naturalną. Dowolne przekształcenie $d\colon X^n \to X$ nazywamy {\em $n$-argumentowym działaniem} określonym w~zbiorze $X$, przy czym {\em działaniem zero-argumentowym} nazywamy dowolnie ustalony element zbioru $X$.
+\end{df}
+
+\begin{df}
+Niech $X$ będzie dowolnym zbiorem, a~$n$ dowolną, ustaloną liczbą naturalną. {\em Strukturą algebraiczną} nazywamy strukturę składającą się ze zbioru $X$ wraz z~pewną liczbą działań $d_i$ ($i = 1,\dots,n$) określonych w~tym zbiorze. Strukturę algebraiczną zapisujemy w~postaci układu $(X,d_1,\dots,d_n)$.
+\end{df}
+
+\begin{df}
+Niech $(B,\vee,\wedge,\neg,0,1)$ będzie strukturą algebraiczną, w~której $B$ jest niepustym zbiorem, $\vee$ i~$\wedge$ są działaniami dwuargumentowymi, $\neg$ jest działaniem jednoargumentowym, a~0 i~1 działaniami zero-argumentowymi. Strukturę tę nazywamy {\em algebrą Boole'a}, jeżeli działania $\vee,\wedge,\neg,0,1$ są tak określone, że spełniają następujące cztery warunki:
+\end{df}
+
+\begin{enumerate}
+    \item Działania $\vee$ i~$\wedge$ są łączne i~przemienne.
+    \item Działanie $\vee$ jest rozdzielne względem $\wedge$ i~odwrotnie.
+    \item Dla dowolnego $a \in B$:
+
+    ${a \vee (\neg a) = 1}$,
+
+    ${a \wedge (\neg a) = 0}$,
+
+    ${a \vee 0 = a}$,
+
+    ${a \wedge 1 = a}$.
+
+    \item Elementy 0 i 1 są różne.
+\end{enumerate}
+
+Elementy zbioru $B$ nazywamy {\em stałymi boolowskimi}, zaś każdą zmienną przyjmującą wartości ze zbioru $B$ nazywamy {\em zmienną boolowską}.
+
+{\bf Prawa pochłaniania:} ???
+
+{\bf Prawa de Morgana:} ???
+
+{\em Dwuwartościową algebrą Boole'a} ($\mathit{BA}$) nazywamy algebrę Boole'a dla której $B=\{0,1\}$, zaś działania $\vee,\wedge,\neg$ odpowiadają logicznej alternatywie, koniunkcji i~negacji.
+
+Stałe boolowskie 0 i~1 wraz ze wszystkimi zmiennymi boolowskimi algebry $\mathit{BA}$ i~ich zaprzeczeniami nazywamy {\em literałami boolowskimi}.
+
+Niech $\mathit{BA} = (B,\vee,\wedge,\neg,0,1)$ będzie dwuwartościową algebrą Boole'a. {\em Zbiór wyrażeń (formuł) boolowskich}  algebry $\mathit{BA}$ jest najmniejszym zbiorem spełniającym następujące dwa warunki:
+
+Dowolna stała lub zmienna boolowska algebry $\mathit{BA}$ należy do zbioru formuł boolowskich algebry $\mathit{BA}$.
+
+Jeśli $a$, $b$ są formułami boolowskimi algebry $\mathit{BA}$, to również $\neg a$, $a \wedge b$ i~$a \vee b$ są formułami boolowskimi algebry $\mathit{BA}$.
+
+Wartościowanie $W$ wyrażeń (formuł) boolowskich algebry $\mathit{BA}$ jest funkcją przyporządkowującą każdemu wyrażeniu boolowskiemu liczbę ze zbioru $\{0,1\}$. Dla dowolnego wyrażenia boolowskiego $b$, liczbę $W(b)$ nazywamy wartością wyrażenia $b$ i~obliczamy ją w zwykły sposób, tzn. poprzez wykonanie wszystkich działań występujących w~wyrażeniu $b$ zgodnie z~ich określeniem oraz w~kolejności wskazywanej przez nawiasy występujące w~wyrażeniu $b$.
+
+Niech $\mathit{BA} = (B,\vee,\wedge,\neg,0,1)$ będzie dwuwartościową algebrą Boole'a, a~$n$ dowolną, ustaloną liczbą naturalną. Dowolną funkcję $f\colon B^n \to B$ nazywamy {\em funkcją boolowską $n$ zmiennych}.
+
+Funkcję boolowską określamy za pomocą odpowiedniego wyrażenia boolowskiego. Można także opisywać funkcję boolowską za pomocą tabelki zawierającej wszystkie możliwe argumenty ze zbioru $\{0,1\}^n$ wraz z~odpowiadającymi im wartościami ze zbioru $\{0,1\}$.
+
+Przykład: $f(x_1,x_2,x_3) = (x_1 \vee x_2) \wedge (\neg x_2 \vee x_3)$.
+
+Funkcję boolowską $n$-zmiennych $f$ można przedstawić w~dwóch postaciach:
+
+???
+
+przy czym oznaczenie $x_i^{a_i}$ jest równe $x_i$, jeśli $a_i=1$ i~$\neg x_i$, jeśli $a_i=0$.
+
+Postać pierwszą nazywamy {\em alternatywną postacią normalną} (disjunctive normal form) i~oznaczamy przez $\mathit{DNF}_f$. Postać drugą nazywamy {\em koniunkcyjną postacią normalną} (conjunctive normal form) i~oznaczamy przez $\mathit{CNF}_f$.
+
+Z powodów technicznych szczególnie atrakcyjna jest sytuacja, gdy do przedstawienia funkcji boo\-lowskiej wystarczą dwa tzw. poziomy logiczne: poziom koniunkcji (na którym występuje koniunkcja stałych lub zmiennych boolowskich) i~poziom alternatywy (gdzie wyrażenia koniunkcyjne z~pierwszego poziomu tworzą alternatywę). Taką postać funkcji boolowskiej nazywamy {\em wielomianem boolowskim}.
+
+Niech $f$ będzie funkcją boolowską $n$-zmiennych.
+
+{\em Jednomianem boolowskim} (monom) nazywamy dowolne wyrażenie boolowskie będące koniunkcją literałów boolowskich. {\em Kosztem obliczeniowym} jednomianu boolowskiego nazywamy liczbę literałów boolowskich tworzących jednomian boolowski.
+
+{\em Wielomianem boolowskim} (polynomial) nazywamy dowolne wyrażenie boolowskie będące alternatywą jednomianów boolowskich. {\em Kosztem obliczeniowym} wielomianu boolowskiego nazywamy sumę arytmetyczną kosztów obliczeniowych wszystkich jednomianów boolowskich tworzących wielomian boolowski.
+
+Wielomian boolowski $p$ {\em oblicza funkcję boolowską} $f$ wtedy i~tylko wtedy, gdy\\ $\forall x \in f^{-1}(B)\colon p(x) = f(x)$.
+
+Wielomian boolowski $p$ nazywamy {\em wielomianem boolowskim o~najmniejszym koszcie obliczeniowym} dla funkcji boolowskiej $f$ wtedy i~tylko wtedy, gdy $p$ oblicza $f$ i~nie istnieje inny wielomian boolowski obliczający $f$ i~mający mniejszy koszt obliczeniowy niż $p$.
+
+Proces prowadzący do przedstawienia funkcji boolowskiej w~postaci wielomianu boolowskiego o~najmniejszym koszcie obliczeniowym nazywamy {\em minimalizacją funkcji boolowskiej}. Definicję wielomianu boolowskiego obliczającego daną funkcje boolowską spełnia postać DNF tej funkcji, a~zatem dla każdej funkcji boolowskiej istnieje chociaż jeden wielomian boolowski obliczający tę funkcję. Zatem istnieje również wielomian o~najmniejszym koszcie obliczeniowym.
+
+Niech $f$ będzie funkcją boolowską $n$-zmiennych.
+
+Funkcję boolowską $f_{imp}(x_1,\dots,x_n) = x_{i_1}^{a_1} \wedge \dots \wedge x_{i_k}^{a_k}$, gdzie $\{x_{i_1},\dots,x_{i_k}\} \subseteq \{x_{1},\dots,x_{n}\}$ oraz $a_i \in \{0,1\}$ (dla $i=1,\dots,k$), nazywamy {\em implikantem funkcji boolowskiej} $f$ wtedy i~tylko wtedy, gdy spełniony jest następujący warunek: $\forall x \in B^n \colon (f_{imp}(x) = 1 \Rightarrow f(x) = 1)$.
+
+Zbiór wszystkich implikantów funkcji $f$ oznaczamy przez $I(f)$.
+
+Niech $f$ będzie funkcją boolowską $n$-zmiennych i~niech implikant $g \in I(f)$.  Implikant $g$ nazywamy {\em implikantem pierwszym}, jeśli jest implikantem minimalnym ze względu na liczbę czynników. Zbiór wszystkich implikantów pierwszych funkcji $f$ oznaczamy przez $\mathit{PI}(f)$.
+
+Implikant pierwszy danej funkcji boolowskiej ma taką własność, że odrzucenie z~niego dowolnego czynnika powoduje, że powstała w~ten sposób funkcja nie jest już implikantem.
+
+Wielomian boolowski o~najmniejszym koszcie obliczeniowym dla funkcji boolowskiej $f$ jest zbudowany tylko z~implikantów funkcji $f$.
+
+\end{document}
+
+
+
+
+

@@ -1,0 +1,94 @@
+\documentclass[12pt,leqno]{article}
+\usepackage[a4paper,top=3cm,bottom=3cm,left=3cm,right=3cm]{geometry}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{fancyhdr}
+\usepackage[center]{titlesec}
+\usepackage{indentfirst}
+
+\setcounter{page}{110}
+\setcounter{section}{4}
+\setcounter{subsection}{10}
+
+\numberwithin{equation}{section}
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\chead{\tiny{4. ELLIPTIC PDES}}
+\lhead{\tiny\thepage}
+
+\makeatletter
+\renewcommand*{\@cite@ofmt}{\bfseries\hbox}
+\makeatother
+
+\begin{document}
+
+\hfill\begin{minipage}{\dimexpr\textwidth-2cm}
+In that case, the solutions are
+$$u = \sum_{\lambda_n \neq \lambda} \frac{\left(f, \phi_n\right)}{\lambda_n - \lambda} \phi_n + \sum_{n=M}^{N} c_n \phi_n$$
+
+where $\left\lbrace c_M,\dots,c_N\right\rbrace$ are arbitrary real constants.
+\end{minipage}
+
+\subsection{Interior regularity}
+
+\setcounter{equation}{33}
+
+Roughly speaking, solutions of elliptic PDFe are as smooth as the data allows.
+For boundary value problems, it is convenient to consider the regularity of the
+solution in the interior of the domain and near the boundary speparately. We begin
+by studying the interior regularity of solutions. We follow closely the presentation
+in \cite{SomePresentation}.
+
+To motivate the regularity theory, consider the following simple \emph{a priori} esti\-1mate
+for the Laplacian. Suppose that $u \in C_c^{\infty}(\mathbb{R}^n)$. Then, integrating by parts
+twice, we get
+\begin{equation*}
+\begin{split}
+\int (\Delta u)^2 dx & = \sum_{i,j=1}^{n} \int (\partial_{ii}^2 u) (\partial_{jj}^2 u) \ dx \\
+& = - \sum_{i,j=1}^{n} \int (\partial_{iij}^3 u) (\partial_{j}^2 u) \ dx \\
+& = \sum_{i,j=1}^{n} \int (\partial_{ij}^2 u) (\partial_{ij}^2 u) \ dx \\
+& = \int \left|D^2 u\right|^2 \ dx.
+\end{split}
+\end{equation*}
+Hence, if $- \Delta u = f$, then
+$$ \lVert D^2 u \rVert_{L^2} = \lVert f \rVert_{L^2}^2.$$
+Thus, w can control the $L^2$-norm of all second derivatives of $u$ by the $L^2$-norm
+of the Laplacian of $u$. This estimate suggest that we should have $u \in H_{loc}^2$ if
+$f, u \in L^2$, as is in fact true. The above computation is, however, not justified for
+weak solutions that belong to $H^1$; as far as we know from previous existence
+theory, such solutions may not event posses second-order weak derivatives.
+
+We will consider a PDE
+\begin{align}
+\label{eq:firstEq}
+Lu = f && \text{in } \Omega
+\end{align}
+where $\Omega$ is an open set in $\mathbb{R}^n, f \in L^2(\Omega)$, and $l$ is a uniformly elliptic of the form
+\begin{equation}
+\label{eq:secondEq}
+Lu = - \sum_{i,j=1}^{n} \partial_i (a_{ij} \partial_j u).
+\end{equation}
+It is straightforward to extend the proof of the regularity theorem to uniformmly
+elliptic operations thath contain lower-order terms \cite{SomePresentation}.
+
+A function $u \in H^i(\Omega)$ is a weak solution of (\ref{eq:firstEq})--(\ref{eq:secondEq}) if
+\begin{align}
+\label{eq:thirdEq}
+a(u,v) = (f,v) && \text{for all } v \in H_0^1(\Omega),
+\end{align}
+
+\begin{thebibliography}{x}
+\makeatletter
+\addtocounter{\@listctr}{8}
+\makeatother
+
+\bibitem{SomePresentation}
+Some Presentation
+\end{thebibliography}
+
+\end{document}

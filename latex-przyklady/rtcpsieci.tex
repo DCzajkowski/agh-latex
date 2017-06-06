@@ -1,0 +1,85 @@
+\documentclass[a4paper,12pt]{article}      
+\usepackage[polish]{babel}
+\usepackage[latin2]{inputenc} 
+\usepackage[T1]{fontenc}
+\usepackage{times}
+\usepackage{amssymb}
+
+\begin{document}                           
+
+\section{RTCP-sieci}
+
+%f(x) = 2x-3
+%
+%$f(x) = 2x-3\alpha$
+
+RTCP-sieci, podobnie jak sieci kolorowane, zaliczaj± siê do sieci Petriego wysokiego poziomu. Oznacza to mo¿liwo¶æ operowania ró¿nymi typami i~warto¶ciami znaczników wystêpuj±cych w~miejscach sieci, a~jednocze¶nie wprowadza konieczno¶æ stosowania czêsto z³o¿onych wyra¿eñ do opisu {\em przep³ywu} tych znaczników. Sk³adnia i~semantyka takich wyra¿eñ zale¿na jest zazwyczaj od u¿ywanego oprogramowania wspomagaj±cego tworzenie modeli w~postaci sieci Petriego i~nie jest okre¶lana w~definicji sieci. W~dalszej czê¶ci przyjêto jedynie za³o¿enie, ¿e sk³adnia taka istnieje, ³±cznie z odpowiedni± semantyk±, i~mo¿na w jednoznaczny sposób zdefiniowaæ opisane poni¿ej pojêcia.\footnote{W~prezentowanych przyk³adach zastosowano sk³adniê zgodn± z~oprogramowaniem {\em Adder Editor} przeznaczonym do konstruowania RTCP-sieci.}
+
+Dla dowolnej zmiennej $v$, symbolem $\mathcal{T}(v)$ bêdzie oznaczany {\em typ} tej zmiennej, tzn. zbiór wszystkich mo¿liwych warto¶ci, jakie zmienna ta mo¿e przyjmowaæ. Niech $x$ bêdzie wyra¿eniem, $\mathcal{V}(x)$ bêdzie oznaczaæ zbiór zmiennych wystêpuj±cych w~wyra¿eniu $x$, a~$\mathcal{T}(x)$ {\em typ} wyra¿enia, tzn. zbiór wszystkich mo¿liwych warto¶ci, jakie mo¿na otrzymaæ w~wyniku warto¶ciowania wyra¿enia $x$. Dla dowolnego zbioru zmiennych $V$, {\em typ} zbioru zmiennych zdefiniowany jest nastêpuj±co:
+
+\begin{equation} 
+\mathcal{T}(V) = \{\mathcal{T}(v)\colon v \in  V\}.
+\label{eq:TV}
+\end{equation}
+
+Symbolem $Bool$ oznaczany bêdzie zbiór warto¶ci logicznych (zawieraj±cy sta³e {\em prawda} i~{\em fa³sz}). Dla ³uku $a$, symbole $P(a)$ i~$T(a)$ bêd± oznaczaæ ten z~wêz³ów ³uku, który jest odpowiednio miejscem i~przej¶ciem. 
+
+
+Definicja RTCP-sieci jest oparta na definicji niehierarchicznych czasowych sieci kolorowanych. Podstawowe ró¿nice, jakie wystêpuj± miêdzy tymi klasami sieci, s± nastêpuj±ce:
+
+\begin{itemize}
+
+\item
+W~RTCP-sieciach, w przeciwieñstwie do CP-sieci, u¿ywana jest funkcja priorytetów, okre¶lona na zbiorze przej¶æ sieci. Zastosowanie priorytetów przej¶æ, umo¿liwia bezpo¶rednie modelowanie deterministycznego wyboru.
+
+\item
+W~RTCP-sieciach niedopuszczalne s± ³uki wielokrotne, a~zatem zbiór ³uków sieci definiowany jest jako relacja (w~przeciwieñstwie do CP-sieci, które s± multigrafami). 
+
+\item
+W~RTCP-sieciach ka¿dy z~³uków ma przypisane dwa wyra¿enia: wagê ³uku i~wyra¿enie czasowe. Wyra¿enia te musz± spe³niaæ nastêpuj±ce warunki: dowolne warto¶ciowanie wagi ³uku musi dawaæ w~wyniku pojedynczy znacznik odpowiedniego typu, a~dowolne warto¶ciowanie wyra¿enia czasowego musi dawaæ w~wyniku liczbê wymiern± nieujemn±. W~przypadku CP-sieci warto¶ciowanie wagi ³uku mo¿e dawaæ w~wyniku wielozbiór znaczników, a~wyra¿enia czasowe przypisywane s± tylko niektórym ³ukom wej¶ciowym miejsc. 
+
+\item
+Model czasu stosowany w~RTCP-sieciach ró¿ni siê od modelu u¿ywanego \mbox{w~CP-sieciach}. Piecz±tki czasowe przypisywane s± do miejsc, zamiast do znaczników. Dodatnia warto¶æ piecz±tki czasowej okre¶la, jak d³ugo znaczniki w danym miejscu pozostan± jeszcze niedostêpne. Z ka¿dym taktem zegara warto¶æ piecz±tki czasowej maleje, a gdy osi±gnie warto¶æ zero, znaczniki staj± siê dostêpne dla przej¶æ sieci. Kolejne takty zegara mog± spowodowaæ, ¿e piecz±tka czasowa bêdzie przyjmowaæ warto¶ci ujemne, co jest okre¶lane jako {\em starzenie siê znaczników}, na przyk³ad warto¶æ $-3$ oznacza wiek wynosz±cy trzy jednostki czasu. Dla dowolnego przej¶cia mo¿na okre¶liæ, czy mo¿e ono usun±æ znacznik z~danego swojego miejsca wej¶ciowego bezpo¶rednio po tym, jak stanie siê on dostêpny, czy te¿ musi czekaæ, a¿ osi±gnie on odpowiedni wiek (decyduj± o tym {\em wyra¿enia czasowe ³uków}).
+\end{itemize}
+
+\medskip
+
+Strukturê $\mathcal{N} = ( \Sigma, P, T, A, C, G, I, E_M, E_S, M_0, S_0)$
+nazywamy {\em RTCP-sieci±}, je¿eli spe³nione s± nastêpuj±ce warunki:
+
+\begin{itemize}
+
+\item $\Sigma$ jest niepustym, skoñczonym zbiorem {\em typów} ({\em kolorów}), bêd±cych zbiorami niepustymi.
+
+\item $P$  jest niepustym, skoñczonym zbiorem {\em miejsc}.
+
+\item $T$ jest niepustym, skoñczonym zbiorem {\em przej¶æ} (tranzycji) takim, ¿e $P \cap T = \emptyset$.
+
+\item $A \subseteq (P \times T) \cup (T \times P)$ jest zbiorem {\em ³uków}.
+
+\item $C \colon P \rightarrow  \Sigma$ jest {\em funkcj± typów} ({\em kolorów}), przypisuj±c± ka¿demu z~miejsc typ jego znaczników.
+
+\item $G$ jest {\em funkcj± zastrze¿eñ} (dozorów), przypisuj±cym ka¿demu z przej¶æ wyra¿enie takie, ¿e: $\forall t \in T \colon \mathcal{T}(G(t)) \subseteq Bool \wedge  \mathcal{T}(\mathcal{V}(G(t))) \subseteq \Sigma$, tzn. wyra¿enie mog±ce zawieraæ zmienne typów nale¿±cych do $\Sigma$, i~którego dowolne warto¶ciowanie daje w~wyniku warto¶æ logiczn±.
+
+\item $I \colon T \to \mathbb{N}\cup \{0\}$ jest {\em funkcj± priorytetów}, przypisuj±c± ka¿demu z~przej¶æ jego {\em priorytet}.
+
+\item $E_M$ jest {\em funkcj± wag ³uków}, przypisuj±c± ka¿demu z~³uków wyra¿enie takie, ¿e:
+$\forall a \in A \colon$ $\mathcal{T}(E_M(a)) \subseteq C(P(a)) \wedge \mathcal{T}(\mathcal{V}(E_M(a))) \subseteq \Sigma$, tzn. wyra¿enie mog±ce zawieraæ zmienne typów nale¿±cych do $\Sigma$, i~którego dowolne warto¶ciowanie daje w~wyniku pojedynczy znacznik nale¿±cy do typu miejsca $P(a)$.
+
+\item $E_S$ jest {\em funkcj± wag czasowych}, przypisuj±c± ka¿demu z ³uków {\em wyra¿enie czasowe} takie, ¿e:
+$\forall a \in A \colon \mathcal{T}(E_S(a)) \subseteq \mathbb{Q}^{+} \cup \{0\}
+\wedge \mathcal{T}(\mathcal{V}(E_S(a))) \subseteq \Sigma $, tzn. wyra¿enie mog±ce zawieraæ zmienne typów nale¿±cych do $\Sigma$, i~którego dowolne warto¶ciowanie daje w~wyniku nieujemn± liczbê wymiern±.
+
+\item $M_0$ jest {\em znakowaniem pocz±tkowym} takim, ¿e $\forall p \in P\colon M_0(p) \in 2^{C(p)^*}$, tzn. $M_0$ jest funkcj±, która ka¿demu z miejsc przyporz±dkowuje wielozbiór nad typem (kolorem) przypisanym do tego miejsca.
+
+\item $S_0 \colon P \to \mathbb{Q}$ jest {\em pocz±tkowym rozk³adem piecz±tek czasowych}.
+
+\end{itemize}
+
+$off$
+
+
+
+
+
+\end{document}

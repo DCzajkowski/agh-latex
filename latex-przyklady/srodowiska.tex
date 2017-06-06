@@ -1,0 +1,105 @@
+\documentclass[a4paper,12pt]{book}      
+\usepackage[latin2]{inputenc} 
+\usepackage[T1]{fontenc}
+\usepackage{times}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[polish]{babel}
+
+
+\theoremstyle{definition} 
+\newtheorem{df}{Definicja}
+\newtheorem{tw}{Twierdzenie}[chapter]
+\theoremstyle{remark} 
+\newtheorem{lm}[tw]{Lemat}
+
+
+\begin{document}     
+
+                      
+\chapter{W³asno¶ci}
+\label{chap:wlasnosci}
+
+Poza w³asno¶ciami dotycz±cymi ograniczenia poszczególnych miejsc sieci, definiuje siê równie¿ w³asno¶ci odnosz±ce siê do ³±cznej liczby znaczników w~sieci. Sieæ nazywana jest {\em zachowawcz±}, je¿eli ³±czna liczba znaczników nie ulega zmianie. W~szczególno¶ci mo¿e siê to odnosiæ do wa¿onej sumy znaczników.
+
+\begin{df}
+\label{def:zachowawczosc}
+Sieæ $\mathcal{N}$ nazywamy {\em zachowawcz±}, je¿eli:
+\begin{equation}
+\label{eq:zachowawczosc}
+\forall (M,S) \in \mathcal{R}(M_0,S_0)\colon \sum_{p\in P} |M(p)| = \sum_{p\in P} |M_0(p)|.
+\end{equation}
+Sieæ $\mathcal{N}$ nazywamy {\em zachowawcz± wzglêdem wektora wag} $w = (w_1,w_2,\dots,w_n)$, gdzie $w_i > 0$, dla $i=1,2,\dots,n$, ($P=\{p_1,p_2,\dots,p_n\}$), je¿eli:
+\begin{equation}
+\label{eq:zachowawczosc2}
+\forall (M,S) \in \mathcal{R}(M_0,S_0)\colon \sum_{i = 1}^{n} w_i |M(p_i)| = \sum_{i = 1}^{n} w_i |M_0(p_i)|.
+\end{equation}
+\end{df}
+
+Zachowawczo¶æ sieci jest w³asno¶ci± mocniejsz± ni¿ ograniczono¶æ. Wymagane jest, by nie tylko nie nastêpowa³ nieograniczony wzrost liczby znaczników w~miejscach sieci, ale by ³±czna ich liczba (ewentualnie wa¿ona) pozostawa³a sta³a. Je¿eli mo¿liwe jest podanie wektora wag tylko dla pewnego podzbioru zbioru miejsc, to mówimy, ¿e sieæ jest {\em czê¶ciowo zachowawcza}.
+
+Dodatkowo w¶ród stanów sieci wyró¿nia siê stany, do których zawsze mo¿na powróciæ ({\em stany w³asne}). Czêsto istotna jest równie¿ mo¿liwo¶æ powrotu do stanu pocz±tkowego.
+
+
+\begin{df}
+\label{def:odwracalnosc}
+Niech dana bêdzie sieæ $\mathcal{N}$.
+Stan pocz±tkowy $(M_0,S_0)$ nazywamy {\em odtwarzalnym}, je¿eli istnieje stan $(M,S) \in \mathcal{R}(M_0,S_0)$ ró¿ny od $(M_0,S_0)$, z~którego stan pocz±tkowy ponownie jest osi±galny. Sieæ $\mathcal{N}$ nazywamy {\em odtwarzaln±}, je¿eli stan pocz±tkowy jest odtwarzalny.
+%
+Sieæ $\mathcal{N}$ nazywamy {\em odwracaln±}, je¿eli stan pocz±tkowy jest osi±galny z~ka¿dego stanu $(M,S) \in \mathcal{R}(M_0,S_0)$. 
+\end{df}
+
+\chapter{Analiza}
+\label{chap:analiza}
+
+\begin{df}
+\label{def:wezelPelny}
+Wêze³ $(M,S)$ grafu osi±galno¶ci $\mathcal{G}=(V,A,\gamma)$ nazywamy {\em pe³nym}, je¿eli dla ka¿dego przej¶cia $t\in T$, istnieje droga 
+prowadz±ca od wêz³a $(M,S)$, zawieraj±ca ³uk z~etykiet± $((t,b), n)$, gdzie $b \in \mathcal{B}(t)$ i~$n \in \mathbb{Q}^+ \cup \{0\}$.
+\end{df}
+
+  
+\begin{tw}
+\label{tw:wezlyPelneZywotnosc}
+Sieæ $\mathcal{N}$ jest ¿ywa wtedy i~tylko wtedy, gdy wszystkie wêz³y grafu $\mathcal{G}$ s± pe³ne.
+\end{tw}
+
+\begin{proof}[{\bf Dowód.}]
+Niech $(M,S) \in V$. Je¿eli sieæ $\mathcal{N}$ jest ¿ywa, to dla dowolnego przej¶cia $t\in T$, istnieje stan $(M', S') \in \mathcal{R}(M,S)$, przy którym przej¶cie $t$ jest aktywne. Stan $(M', S')$ albo jest reprezentowany przez jeden z~wêz³ów grafu $\mathcal{G}$, albo istnieje stan $(M',S'') \in V$ taki, ¿e $(M', S')$ jest osi±galny z~$(M',S'')$ w~wyniku up³ywu czasu.
+Istnieje zatem droga prowadz±ca od wêz³a $(M,S)$, która zawiera ³uk z~etykiet± $((t,b), n)$, gdzie $b \in \mathcal{B}(t)$ i~$n \in \mathbb{Q}^+ \cup \{0\}$. Wynika st±d, ¿e wêze³ $(M,S)$ musi byæ wêz³em pe³nym. Z~dowolno¶ci wyboru wêz³a $(M,S)$ wynika, ¿e wszystkie wêz³y grafu osi±galno¶ci s± wêz³ami pe³nymi. 
+
+
+Z~drugiej strony, je¿eli wszystkie wêz³y grafu osi±galno¶ci s± pe³ne, to wszystkie przej¶cia sieci s± potencjalnie wykonalne dla ka¿dego stanu $(M,S) \in \mathcal{R}(M_0,S_0)$, a~zatem sieæ jest ¿ywa.
+\end{proof}
+
+\begin{lm}
+\label{lem:relacjaPokrywaniaPrzejscie}
+Niech dane bêd± dwa stany $(M_1,S_1)$, $(M_2,S_2)$ sieci $\mathcal{N}$ takie, ¿e $(M_1,S_1)\simeq (M_2,S_2)$. Je¿eli $(M_1,S_1) \stackrel{(t,b)}{\longrightarrow} (M_1',S_1')$ i~$(M_2,S_2) \stackrel{(t,b)}{\longrightarrow} (M_2',S_2)'$, to $(M_1',S_1')\simeq (M_2',S_2')$.
+\end{lm}
+
+\begin{proof}[{\bf Dowód.}]
+Je¿eli $(M_1,S_1)\simeq (M_2,S_2)$, to $M_1 = M_2$ oraz spe³niony jest warunek~(\ref{eq:stanyPokrywajaceSie}). Poniewa¿ w~obu stanach wykonywane jest to samo przej¶cie $t$ przy wi±zaniu $b$, wiêc $M_1' = M_2'$. Je¿eli $p \in \mathit{In}(t) \cup \mathit{Out}(t)$, to zgodnie ze wzorem~(\ref{eq:nowyRozkladPieczatek}), $S_1'(p) = S_2'(p)$. Je¿eli $p \notin \mathit{In}(t) \cup \mathit{Out}(t)$, to $S_1'(p) = S_1(p)$ oraz $S_2'(p) = S_2(p)$. Z~powy¿szych rozwa¿añ wynika, ¿e stany $(M_1',S_1')$ i~$(M_2',S_2')$ pokrywaj± siê.
+\end{proof}
+
+
+\begin{tw}
+\label{tw:relacjaPokrywaniaWlasnosci}
+Niech dane bêd± stany $(M_1,S_1)$ i $(M_2,S_2)$ sieci $\mathcal{N}$ takie, ¿e $(M_1,S_1)\simeq (M_2,S_2)$. Wówczas:
+\begin{equation}
+\label{eq:relacjaPokrywaniaWlasnosci}
+\mathcal{L}(M_1,S_1) = \mathcal{L}(M_2,S_2).
+\end{equation}
+\end{tw}
+
+\begin{proof}[{\bf Dowód.}]
+Je¿eli $(M_1,S_1)\simeq (M_2,S_2)$, to $M_1 = M_2$ oraz spe³niony jest warunek~(\ref{eq:stanyPokrywajaceSie}), a~zatem dla dowolnego miejsca $p\in P$ znaczniki w~tym miejscu s± w~stanach $(M_1,S_1)$ i~$(M_2,S_2)$ dostêpne dla tych samych przej¶æ. W~obu tych stanach aktywne s± zatem dok³adnie te same przej¶cia, przy tych samych wi±zaniach. 
+
+St±d, je¿eli dla pewnego przej¶cia $t$ i~wi±zania $b\in \mathcal{B}(t)$, $(M_1,S_1) \stackrel{(t,b)}{\longrightarrow} (M_1',S_1')$, to równie¿ istnieje stan $(M_2',S_2')$ taki, ¿e $(M_2,S_2) \stackrel{(t,b)}{\longrightarrow} (M_2',S_2)'$. Ponadto, na podstawie lematu~\ref{lem:relacjaPokrywaniaPrzejscie} $(M_1',S_1') \simeq (M_2',S_2')$.
+Z~powy¿szych rozwa¿añ, na podstawie zasady indukcji matematycznej, wynika teza twierdzenia.
+\end{proof}
+
+
+
+
+
+\end{document}

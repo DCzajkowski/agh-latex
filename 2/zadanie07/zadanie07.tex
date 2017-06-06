@@ -1,0 +1,56 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[polish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{anysize}
+\usepackage{times}
+\usepackage{multirow}
+\usepackage{amsmath}
+
+%\marginsize{left}{right}{top}{bottom}
+\marginsize{3cm}{3cm}{3cm}{3cm}
+\sloppy
+
+\begin{document}
+
+    Istnieje ścisły związek między rozkładem macierzy \(A\) na macierze \(L\) i \(U\) a metodą eliminacji Gaussa.
+    Mozna wykazać, że elementy kolejnych kolumn macierzy \(L\) są równe współczynnikom przez które mnożone
+    są w kolejnych krokach wiersze układu równań celem dokonania eliminacji niewiadomych w odpowiednich
+    kolumnach. Natomiast macierz \(U\) jest równa macierzy trójkątnej uzyskanej w eliminacji Gaussa.
+
+    \[
+        [A|b] =
+        \begin{bmatrix}
+            2 & 2 & 4 & 4 \\
+            1 & 2 & 2 & 4 \\
+            1 & 4 & 1 & 1 \\
+        \end{bmatrix} =
+        \begin{bmatrix}
+            2 & 2 & 4 & 4 \\
+            0 & 1 & 0 & 2 \\
+            0 & 3 & -1 & -1 \\
+        \end{bmatrix} =
+        \begin{bmatrix}
+            2 & 2 & 4 & 4 \\
+            0 & 1 & 0 & 2 \\
+            0 & 0 & -1 & -7 \\
+        \end{bmatrix}
+    \]
+    \begin{sloppypar}
+    \centerline{
+        ${
+            L = \begin{bmatrix}
+                1 & 0 & 0 \\
+                \frac{1}{2} & 1 & 0 \\
+                \frac{1}{2} & 3 & 1 \\
+            \end{bmatrix}
+            U = \begin{bmatrix}
+                2 & 2 & 4 & 4 \\
+                0 & 1 & 0 & 2 \\
+                0 & 0 & -1 & -7 \\
+            \end{bmatrix}
+        }$
+    }
+    \end{sloppypar}
+
+\end{document}

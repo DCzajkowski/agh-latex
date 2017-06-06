@@ -1,0 +1,31 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[polish]{babel}
+\usepackage[latin2]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{anysize}
+\usepackage{times}
+\usepackage{multirow}
+
+%\marginsize{left}{right}{top}{bottom}
+\marginsize{3cm}{3cm}{3cm}{3cm}
+\sloppy
+
+\begin{document}
+
+    \begin{table}[htbp]
+        \caption{Default Table}
+        \label{Tab:SRNRValues}
+        \begin{center}
+            \begin{tabular}{|c|c|c|c|}
+                \hline
+                \multirow{2}{1.5cm}{Method}& \multicolumn{3}{p{5cm}|}{\centering Measurements} \\
+                \cline{2-4} & \multicolumn{1}{c|}{Clean} & \multicolumn{1}{c|}{SMNR=15 dB} & \multicolumn{1}{c|}{SMNR = 10 dB} \\ \hline
+                Type1 & 27.54 & 13.23 & 6.80 \\
+                Type2 & 29.55 & 9.61 & 6 \\
+                Type3 & 25.99 & 11.49 & 6.15 \\
+                \hline
+            \end{tabular}
+        \end{center}
+    \end{table}
+
+\end{document}

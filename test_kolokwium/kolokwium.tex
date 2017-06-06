@@ -1,0 +1,62 @@
+\documentclass[a4paper,11pt,leqno]{article}
+\usepackage[polish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{anysize}
+\usepackage{times}
+\usepackage{multirow}
+\usepackage{amsmath}
+\usepackage{fancyhdr}
+
+\setcounter{equation}{80}
+\setcounter{page}{37}
+\marginsize{2cm}{2cm}{2cm}{2cm}
+\sloppy
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+
+\chead{KERNEL METHODS IN MACHINE LEARNING}
+\rhead{\thepage}
+
+\begin{document}
+    \noindent summary, ${F\left(\mathcal{S}\right) \sim \mathcal{N}\left(0,K\right)}$. This induces a predictive model via Bayesian model integration according to
+
+    \begin{equation}
+        p(y|x;S)=\int p(y|F(x,\cdot ))p(F|S)dF,
+    \end{equation}
+
+    \noindent where $x$ is a test point that has been included in a sample (transductive setting). For an i.i.d. sample, the log-posterior for $F$ can be written as
+
+    \begin{equation}
+        \label{eq81}
+        \ln p(F|S)=-\frac{1}{2}F^TK^{-1}F+\sum^{n}_{i=1}[f(x_i,y_i)-g(x_i,F)]+const.
+    \end{equation}
+
+    \noindent Invoking the representer theorem for $\widehat{F}(S):=\arg\max_F\ln p(F|S)$, we know that
+
+    \begin{equation}
+        \widehat{F}(S)_{iy}=\sum^n_{j=1}\sum_{y'\in{Y}}\alpha_{iy}K_{iy,jy'},
+    \end{equation}
+
+    \noindent which we plug into equation (\ref{eq81}) to arrive at
+
+    \begin{equation}
+        \label{eq83}
+        \min_{\alpha}\alpha^TK\alpha-\sum^n_{i=1}(
+            \alpha^TKe_{iy'}
+            + \log \sum_{y\in Y} \exp[\alpha^TKe_iy]
+        ),
+    \end{equation}
+
+    \noindent where $e_{iy}$ denotes the respective unit vector. Notice that for $f(\cdot)=\sum_{iy}\alpha_{iy}k(\cdot, (x_i, y))$ the first term is equivalent to the squared RKHS norm of $f\in H$ since
+    ${
+        \langle f,f\rangle_H=\sum_{i,j}\sum_{y,y'}
+        \alpha_{iy}\alpha_{jy'}
+        \langle k(\cdot, (x_i, y)), k(\cdot, (x_j, y'))\rangle
+    }$. The latter inner product reduces to  ${
+        k((x_i, y), (x_j, y'))
+    }$ due to the reproducing property. Again, the key issue in solving (\ref{eq83}) is how to achieve spareness in the expansion for $\widehat {F}$.
+
+\end{document}

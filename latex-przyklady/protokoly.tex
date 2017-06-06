@@ -1,0 +1,68 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[polish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{times}
+\usepackage{geometry}
+\usepackage{color}
+%\usepackage{amssymb}
+
+\frenchspacing
+\setlength{\parindent}{0mm} 
+\geometry{lmargin=20mm, rmargin=20mm, tmargin=20mm, bmargin=10mm, nofoot, nohead}
+
+\sloppy
+
+
+\newcommand{\protokol}[4]{
+\begin{center}
+{\huge Akademia Górniczo - Hutnicza}\\[3mm]
+{\large im. Stanisława Staszica w Krakowie}\\[2mm]
+\includegraphics[scale=0.2]{logo-agh}\\[2mm]
+{\large Wydział Elektrotechniki, Automatyki, Informatyki i Elektroniki}\\
+\vspace{15mm}
+{\LARGE Protokół z przeprowadzenia egzaminu kierunkowego}\\[2mm]
+\end{center}
+\vspace{9mm}
+Nazwisko i imię studenta: \textbf{#1}\\[2mm]
+Numer albumu: \textbf{#2}\\[2mm]
+Kierunek studiów: Informatyka stosowana\\[2mm]
+Data przeprowadzenia egzaminu: 14 grudnia 2011 r.\\[2mm]
+Miejsce przeprowadzania egzaminu: U2, sala audytoryjna\\[2mm]
+Czas trwania egzaminu: 75 minut\\[2mm]
+Skład komisji:
+\vspace{-2mm}
+\begin{enumerate}
+\setlength{\itemsep}{-1mm}
+\item prof. Jan Janowski (przewodniczący) %TODO
+\item dr hab. Tadeusz Ryś prof. AGH
+\item dr hab. inż. Paweł Nowak prof. AGH
+\item dr inż. Anna Kowalewska
+\end{enumerate}
+\vspace{2mm}
+Liczba punktów uzyskana na egzaminie (skala 0-100):~ \textbf{#3}\\[2mm]
+Uwagi: #4\\
+\vspace{2cm}\\
+Podpisy Członków Komisji\hspace{5.8cm}Podpis Przewodniczącego Komisji
+\newpage
+}
+
+\begin{document}
+
+\pagestyle{empty}
+
+%\protokol{Nazwisko i imię}{Numer albumu}{Punkty}{Uwagi}
+\protokol{Adamski Jan}{111222}{90}{}
+\protokol{Iksiński Stefan}{111222}{62}{}
+\protokol{Kowalska Ewa}{111222}{74}{}
+\protokol{Nowacki Marek}{111222}{76}{}
+\protokol{Nowak Anna}{111222}{88}{}
+
+
+\end{document}
+
+
+
+
+

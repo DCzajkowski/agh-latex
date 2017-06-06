@@ -1,0 +1,130 @@
+\documentclass[a4paper,12pt]{article}      
+\usepackage[latin2]{inputenc} 
+\usepackage[T1]{fontenc}
+\usepackage{times}
+\usepackage{amssymb}
+\usepackage[polish]{babel}
+
+
+\title{RTCP-sieci -- wprowadzenie}
+
+\author{Marcin Szpyrka}
+
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{Wprowadzenie}
+
+W¶ród wielu terminów charakteryzuj±cych systemy czasu rzeczywistego, mo¿na wymieniæ miêdzy innymi wspó³bie¿no¶æ dzia³ania, wymagania terminowo¶ci odpowiedzi, przewidywalno¶æ i niezawodno¶æ dzia³ania. Wszystkie te elementy decyduj± o tym, ¿e ograniczenie siê wy³±cznie do testowania gotowego produktu (lub jego fragmentów), nie jest wystarczaj±ce do tego, by system taki uznaæ za poprawny. Jako¶æ rozwijanego systemu mo¿e zostaæ zdecydowanie poprawiona przez zastosowanie metod formalnych, na ró¿nych etapach rozwoju oprogramowania. Matematyczne metody wykorzystywane czy to na etapie specyfikowania wymagañ, czy te¿ wstêpnego projektowania systemów, pozwalaj± na wyeliminowanie wielu b³êdów na bardzo wczesnym etapie rozwoju oprogramowania, co z~drugiej strony zdecydowanie obni¿a koszty.
+
+W literaturze zaproponowano wiele ró¿nych formalizmów przeznaczonych do modelowania systemów czasu rzeczywistego (\cite{HM}; \cite{Nis}). Najbardziej znane  z nich to algebry procesów (\cite{Hoa85}; \cite{Mil}; \cite{Shaw}), sieci Petriego ({\cite{Jen}; \cite{CSh99}; \cite{KJ98}) i logiki temporalne  
+({\cite{MP81}; \cite{MP92}; \cite{BMN00}). Formalizmy te przeznaczone s± zazwyczaj do analizy okre¶lonych w³asno¶ci rozwijanego systemu, na wybranych etapach rozwoju oprogramowania. Niestety, brak jest spójnej  metody wspieraj±cej specyfikacjê i projektowanie systemów czasu rzeczywistego. Metoda taka mia³aby byæ stosowana w szerszym zakresie, pocz±wszy od specyfikacji wymagañ, a¿ do szczegó³owego projektowania systemu i pozwalaæ na takie rozwijanie modelu, które zachowywa³oby w³asno¶ci udowodnione na wcze¶niejszym etapie, jak równie¿ pozwala³oby na po³±czenie {\em poprawnych} podsystemów, w jeden {\em poprawny} system. 
+
+Prezentowane podej¶cie stara siê zwiêkszyæ  efektywno¶æ metod formalnych. Definicja RTCP-sieci oparta jest na definicji kolorowanych sieci Petriego (zob. \cite{Jen}). W porównaniu do CP-sieci wprowadzono zmodyfikowany model czasu, pozwalaj±cy miêdzy innymi na bezpo¶rednie modelowanie operacji przeterminowania. Drugim wprowadzonym elementem jest funkcja priorytetów, pozwalaj±ca na bezpo¶rednie modelowanie deterministycznego wyboru. Poza tym wprowadzono szereg ograniczeñ dotycz±cych struktury budowanych modeli. Ograniczenia te u³atwiaj± formaln± analizê modeli (miêdzy innymi przez ograniczenie przestrzeni stanów i liczby przej¶æ pomiêdzy stanami), jak równie¿ na automatyczne generowanie kompletnego modelu lub jego czê¶ci. 
+Poza zmianami dotycz±cymi definicji RTCP-sieci, okre¶lono precyzyjnie zasady konstruowania modeli. Przyk³adowo, wykorzystanie {\em szablonów stron} (analogia do szablonów klas w jêzyku C++), pozwala na wielokrotne u¿ycie raz skonstruowanego fragmentu, przy budowie kompletnego modelu.
+
+
+\section{Powi±zane prace}
+
+W czê¶ci tej przedstawione zosta³y te formalizmy (podej¶cia), które stanowi³y punkt wyj¶cia do zdefiniowania RTCP-sieci lub niektórych ich elementów. 
+
+{\bf Kolorowane sieci Petriego.} Sieci Petriego stanowi± w pewnym sensie kompromis pomiêdzy opisem formalnym, a graficznymi metodami modelowania. Punktem wyj¶cia dla prowadzonych poni¿ej rozwa¿añ s± kolorowane sieci Petriego (CP-sieci) \cite{Jen}. CP-sieci zaliczaj± siê do sieci wysokiego poziomu, co miêdzy innymi oznacza, ¿e umo¿liwiaj± operowanie strukturami danych jakie spotykamy w jêzykach programowania wysokiego poziomu. Charakteryzuj± siê one stosunkowo ³atw± i intuicyjn± notacj± graficzn±, dostêpno¶ci± narzêdzi CASE, a tak¿e zaawansowanymi metodami formalnej analizy.
+Czasowe CP-sieci mog± one byæ wykorzystywane do modelowanie systemów czasu rzeczywistego, zarówno do przedstawienia specyfikacji wymagañ \cite{MSzTSz2003b} jak i mniej lub bardziej szczegó³owego projektu takiego systemu. Metody formalnej analizy s± jednak stosunkowo ograniczone w przypadku czasowych CP-sieci. Podstaw± dla sprawdzania w³asno¶ci s± grafy osi±galno¶ci, które s± z definicji nieskoñczone (o ile nie korzystamy z relacyjnych grafów osi±galno¶ci \cite{Jen}). Drug± stosowan± metod± jest symulacja pracy sieci i analiza zebranych danych statystycznych, nie mo¿na jej jednak traktowaæ jako metody formalnej. 
+
+RTCP-sieci zosta³y zdefiniowane, aby sprostaæ nastêpuj±cym wymaganiom:
+
+\begin{itemize}
+\item przy¶pieszyæ i u³atwiæ proces tworzenia modeli w formie sieci Petriego;
+
+\item umo¿liwiæ bezpo¶rednie modelowanie elementów typowych dla programowania wspó³bie¿nego, np.: przeterminowania, priorytetów zadañ, itp.; 
+
+\item u³atwiæ formaln± analizê w³asno¶ci czasowych modelu w formie sieci Petriego wysokiego poziomu.
+\end{itemize}
+
+{\bf Systemy regu³owe}
+W prezentowanym podej¶ciu, RTCP-sieci s± wykorzystywane do modelowania wbudowanych systemów czasu rzeczywistego, których istotnym elementem jest system regu³owy. Na etapie specyfikowania wymagañ system taki opisywany jest z wykorzystaniem tablic decyzyjnych zawieraj±cych uogólnione regu³y decyzyjne (tzn. regu³y, z~nieatomowymi warto¶ciami atrybutów. Tablice takie analizowane s± pod k±tem posiadania okre¶lonych w³asno¶ci takich jak: zupe³no¶æ, niesprzeczno¶æ i czê¶ciowa optymalno¶æ.
+Zupe³no¶æ zbioru regu³ gwarantuje, ¿e w oparciu o utworzony system regu³owy bêdzie mo¿na podj±æ decyzjê w dowolnym dopuszczalnym stanie, w jakim system mo¿e siê znale¼æ, podczas gdy zgodno¶æ zbioru regu³ gwarantuje determinizm w podejmowanych decyzjach. Ostatnia z~w³asno¶ci dotyczy wyeliminowania z tablicy regu³ zale¿nych. 
+Analiza tablic decyzyjnych prowadzona jest automatycznie, po czym s± one przekszta³cane do postaci D-sieci bêd±cych zapisem tablic decyzyjnych w formie kolorowanych sieci Petriego \cite{MSzAL01}. D-sieci stanowi± czê¶æ funkcjonaln± modelu tworzonego w formie RTCP-sieci. 
+
+{\bf Algebry procesów}
+Niektóre pojêcia typowe dla algebr procesów (zob. \cite{Mil}), np. podzia³ operacji na widoczne i niewidoczne z zewn±trz, by³y bod¼cem do wprowadzenia podzia³ów w zbiorze miejsc i~przej¶æ RTCP-sieci ze wzglêdu na ich przeznaczenie. 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{thebibliography}{99}
+
+\bibitem{BMN00}
+BELLINI, P., MATTOLINI, R., NESSI, P.: \textit{Temporal Logics for Real-Time 
+System Specification}, ACM Computing Surveys, Vol. 32, No. 1, 2000.
+
+\bibitem{CSh99}
+CERONE, A., MAGGIOLO-SHETTINI, A.: \textit{Time-Based Expressivity of Time Petri 
+Nets for System Specification}, Theoretical Computer Science, Vol. 216, 1999, pp. 1-53.
+
+\bibitem{HM}
+HEITMEYER, C., MANDRIOLI, D. (Eds.): \textit{Formal Methods for Real-Time Computing}, Jonh Wiley \& Sons, Chichester, 1996.
+
+\bibitem{Hoa85}
+HOARE, C.A.R.: \textit{Communicating Sequential Processes}, Prentice Hall, 1985.
+
+\bibitem{Jen}
+JENSEN, K.: \textit{ Coloured Petri Nets. Basic Concepts, Analysis}
+Methods and Practical Use.
+Vol. 1,2 and 3,
+Springer Verlag, 1996.
+
+\bibitem{KJ98}
+KRISTENSEN, L.M., CHRISTENSEN, S., JENSEN, K.:  \textit{The Practitioner's Guide to 
+Coloured Petri Nets}, Int. Journal on Software Tools for Technology 
+Transfer, Vol. 2, Springer Verlag, 1998, pp. 98-132.
+
+\bibitem{MP81}
+MANNA, Z., PNUELI, A.: \textit{Verification of concurrent programs: Temporal 
+framework}. In BOYER, R.S., MOORE, J.S. (eds) The correctness Problem in 
+Computer Science, Pergamon Press, 1981, pp. 21-272.
+
+\bibitem{MP92}
+MANNA, Z., PNUELI, A.: \textit{The Temporal Logic of Reactive and Concurent 
+Systems}, Academic Press, 1992.
+
+\bibitem{Mil}
+MILNER, R.: \textit{Communication and Concurrency}, Prentice Hall, New York, 1989.
+
+\bibitem{Nis}       
+NISSANKE, N.: \textit{Realtime Systems}, Prentice Hall, 1997.
+
+\bibitem{Shaw}
+SHAW A. C.: \textit{Real-Time Systems and Software}, John Wiley \& Sons, 2001.
+
+\bibitem{MSzAL01} 
+SZPYRKA, M., LIGÊZA, A.: \textit{D-net: A Tool for Verification of Knowledge-Based
+Systems}, Proc of IASTED International Conference Applied Simulation
+and Modelling, Marbella, Spain, 2001, p.~105-110.
+
+\bibitem{MSzTSz2003a}
+SZPYRKA M., SZMUC T.: \textit{RTCP-nets as a Tool for Real-Time Systems Modelling and Analysis}, in
+COLNARIC M., ADAMSKI M., WÊGRZYN M. (Eds.) \textit{Real-Time Programming 2003},  Elsevier Science Ltd., 2003, pp. 21--26.
+
+\bibitem{MSzTSz2003b}
+SZPYRKA M., SZMUC T.: \textit{Specification of external system behaviour based on D-nets:
+theoretical aspects and computer tools}, Automatyka,
+AGH, Tom 7, Zeszyt 1-2, Kraków, 2003, str. 275 - 282.
+
+
+
+\end{thebibliography}
+
+\end{document}
+
+
+
+
+
+
+
+
+

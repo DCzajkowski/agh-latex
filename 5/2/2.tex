@@ -1,0 +1,27 @@
+\documentclass{standalone}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{tikz}
+\usetikzlibrary{calc,through,backgrounds,positioning,fit}
+\usetikzlibrary{shapes,arrows,shadows}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=1,inner sep=0.4mm]
+
+\draw[step=5mm,draw=black!30!white,very thin] (-1.9,-0.9) grid (1.9,2.9);
+
+\draw [red] (0,0) parabola (1.2, 2.88);
+\draw [red] (0,0) parabola (-1.2, 2.88);
+
+\node at (0, 0.5) [left=2pt] {$1$};
+\node at (0.5, 0) [below=2pt] {$1$};
+\node at (0.5, 0.5) [right=2pt,color=red] {$y=x^{2}$};
+
+\draw[thick] [->] (-2,0) -- (2,0) node [right=3pt] {$x$};
+\draw[thick] [->] (0,-1) -- (0,3) node [right=3pt] {$y$};
+
+\end{tikzpicture}
+
+\end{document}

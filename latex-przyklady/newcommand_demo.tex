@@ -1,0 +1,97 @@
+\documentclass[a4paper,12pt,twoside]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{anysize}
+\usepackage{enumerate}
+\usepackage{amssymb}
+\usepackage[polish]{babel}
+
+
+%\marginsize{left}{right}{top}{bottom}
+\marginsize{2.5cm}{2.5cm}{2.5cm}{2.5cm}
+\sloppy
+
+% definicje
+\def\R3{\mathbb{R}^3}
+\def\AGH{Akademia Górniczo-Hutnicza}
+
+\newcounter{zad}
+\newcommand{\zadanie}{\addtocounter{zad}{1} \medskip \noindent \textbf{\thezad. }}
+
+\newcommand{\pytanie}[1]{\vspace{1mm}\zadanie~#1}
+
+\newcommand{\odpowiedzi}[4]{
+\vspace{2mm}
+\begin{tabular}{|p{3mm}|p{14cm}|p{3mm}|}
+\hline
+a) & #1 & \\ \hline
+b) & #2 & \\ \hline
+c) & #3 & \\ \hline
+d) & #4 & \\ \hline
+\end{tabular}
+\vspace{2mm}
+}
+
+
+\begin{document}
+
+
+\section{Polecenie \emph{def}}
+
+Współrzędnymi jednorodnymi (homogenicznymi) punktu skończonego $(x,y,z)$ w przestrzeni $\R3$ nazywamy dowolne cztery liczby (x',y',z',w) takie, że:
+$$x = \frac{x'}{w},\qquad y = \frac{y'}{w},\qquad z = \frac{z'}{w}.$$
+
+\AGH~im. Stanisława Staszica, Al. Mickiewicza 30, 30-059 Kraków
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Polecenia \emph{newcounter} i \emph{newcommand}}
+
+\zadanie (2 pkt.) Napisz deklaracje: 12-elementowej tablicy znaków (zmienna $a$) oraz funkcji $f$, która przyjmuje 2 argumenty $x$ i $y$ będące wskaźnikami do typu zmiennoprzecinkowego o podwójnej precyzji i która nie zwraca żadnej wartości.
+
+\vspace{1mm} 
+
+\dotfill \par \dotfill  
+
+\vspace{1.5mm} 
+
+\zadanie (2 pkt.) 
+Zadeklaruj wskaźnik $p$ do typu zmiennoprzecinkowego pojedynczej precyzji, a następnie utwórz dynamicznie 50-elementową tablicę liczb zmiennoprzecinkowych, na którą wskazuje ten wskaźnik. Dopisz pętlę \emph{for} wypełniającą tablicę wartością 3.1416. Zadeklaruj wszystkie niezbędne zmienne.
+
+\vspace{1mm}
+
+\dotfill \par \dotfill \par \dotfill \par \dotfill \par \dotfill 
+
+\vspace{1.5mm} 
+
+\zadanie (2 pkt.) Napisz fragment kodu, w którym z pliku \emph{dane.txt} odczytywane są wartości dla dwóch zmiennych całkowitych $a$ i $b$. Zadeklaruj wszystkie niezbędne zmienne.
+
+\vspace{1mm}
+
+\dotfill \par \dotfill \par \dotfill 
+
+
+
+
+
+
+
+
+
+
+\pytanie{Zaznacz te z poniższych odpowiedzi, które określają prawdziwe własności funkcji inline w języku C++.}
+
+\odpowiedzi
+{Funkcja inline jest to każda krótka funkcja, która mieści się w jednym wierszu (linii) kodu.}  
+{Funkcja inline może być metodą zaimplementowaną bezpośrednio w definicji klasy.}  
+{Funkcja inline jest to funkcja, której wywołanie jest zastępowane przez kompilator bezpośrednim wstawieniem jej instrukcji do kodu wynikowego.}  
+{Funkcja inline może być funkcją wirtualną.}  
+
+
+
+
+
+\end{document}
+

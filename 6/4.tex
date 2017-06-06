@@ -1,0 +1,56 @@
+\documentclass[fleqn]{article}
+\usepackage[polish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{times}
+\usepackage{amsmath}
+\usepackage[pdftex]{graphicx}
+\usepackage{fancyhdr}
+\setlength{\mathindent}{10pt}
+\pagestyle{fancy}
+\pagenumbering{gobble}
+\chead{\small{2.\quad The propagators for Electrons and Positrons}}
+\rhead{\small{63}}
+\begin{document}
+\noindent and the nonrelativistic retarded propagator is
+\begin{align}
+\label{2}
+G^+_0(x' - x) = &\int\frac{\text{d}^3p}{\left(2\pi\right)^3}\text{exp}\left[\text{i}\,\boldsymbol{p}\cdot\left(x'-x\right)\right]\nonumber\\
+&\times\int^{+\infty}_{-\infty}\frac{\text{d}\omega}{2\pi}\text{exp}\left[-\text{i}\omega\left(t'-t\right)\right]G^+_0(\boldsymbol{p},\omega) .
+\end{align}
+From the previous discussion of the Feynman propagator we have learnt that the appropriate boundary conditions correspond to shifting the poles by adding an infinitesimal imaginary constant, such that
+\begin{align}
+\label{3}
+S_F(p) = \frac{\not{p}+m_0}{p^2 -m^2_0 + \text{i}\varepsilon}.
+\end{align}
+This form implies positive-energy solution propagating forward in time and negative-energy solutions backward in time. In order to find the nonrelativistic limit of $S_F$ we consider (\ref{3}) in the approximation $|\boldsymbol{p}|/m_0\ll1$ and investigate the vicinity of the poles. We write
+\begin{align}
+\label{4}
+\frac{\not p + m_0}{p^2_0 - \boldsymbol{p}^2 - m^2_0 + \text{i}\varepsilon} = \frac{p_0\gamma_0 -\boldsymbol{p}\cdot\boldsymbol{\gamma} + m_0}{\left(p_0 - \sqrt{\boldsymbol{p}^2 + m^2_0}\right)\left(p_0 +\sqrt{\boldsymbol{p}^2 + m^2_0}\right) + \text{i}\varepsilon}.
+\end{align}
+and obtain using the approximation $\sqrt{\boldsymbol{p}^2 + m^2_0} = m_0 +\boldsymbol{p}^2/2m_0+O(\boldsymbol{p}^4/m^4_0)$,
+\begin{align}
+\label{5}
+S_F(p) \approx \frac{p_0\gamma_0 -\boldsymbol{p}\cdot\boldsymbol{\gamma} + m_0}{\left(p_0-m_0-\frac{\boldsymbol{p}^2}{2m_o}\right)\left(\omega + 2m_0 +\frac{\boldsymbol{p}^2}{2m_o}\right) + \text{i}\varepsilon}.
+\end{align}
+Now we study the behaviour of the propagator in the vicinity of its positive-frequency pole. Introducing $\omega=p_0-m_0$ we can reduce (\ref{5}) to
+\begin{align}
+\label{6}
+S_F(p)\approx \frac{(\omega + m_0)\gamma_0 - \boldsymbol{p}\cdot\boldsymbol{\gamma} + m_0}{\left(\omega - \frac{\boldsymbol{p}^2}{2m_0}\right)\left(\omega + 2 m_0 +\frac{\boldsymbol{p}^2}{2m_0} \right) + \text{i}\varepsilon}.
+\end{align}
+For the positive-frequenccy pole, $\omega$ lies in the vicinity of $\boldsymbol{p}^2/2m_0$. Therefore we have $\omega>0$ and $(\omega + 2m_0 +\boldsymbol{p}^2/2m_0) \approx 2m_0 > 0$. Thus, within the approximation of small momenta, (\ref{5}) can be transformed into
+\begin{align}
+\label{7}
+S_F(p)&\approx \frac{1}{2m_0}\frac{m_0(\gamma_0 + 1)- \boldsymbol{p}\cdot\boldsymbol{\gamma}}{\left(\omega-\frac{\boldsymbol{p}^2}{2m_0}\right) +\frac{\text{i}\varepsilon}{2m_0}}\nonumber\\
+&=\frac{\frac{1}{2}(\gamma_0 + 1) - \frac{\boldsymbol{p}\cdot\boldsymbol{\gamma}}{2m_0}}{\left(\omega - \frac{\boldsymbol{p}^2}{2m_0}\right)+\text{i}\varepsilon'},
+\end{align}
+where also $\varepsilon'$ is a small imaginary constant. The first term
+\begin{align*}
+\frac{1}{2}(\gamma_0 + 1) = \left(\begin{matrix}
+1&&&0&\\
+&1&&\\
+&&0&\\
+0&&&0
+\end{matrix}\!\!\!\!\!\!\right)
+\end{align*}
+\end{document}

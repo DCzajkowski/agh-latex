@@ -1,0 +1,150 @@
+\documentclass[a4paper,11pt,twoside]{article}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[polish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage{times}
+\usepackage{graphicx}
+\usepackage{anysize}
+\usepackage{enumerate}
+\usepackage{listings}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{amsfonts}
+\usepackage{anysize}
+\usepackage{amsmath}
+\usepackage{longtable}
+\usepackage{fancyhdr}
+\usepackage{makeidx}
+\usepackage{array}
+\usepackage{tikz}
+\usetikzlibrary{calc,through,backgrounds,positioning,fit}
+\usetikzlibrary{shapes,arrows,shadows,calendar}
+\usepgflibrary{arrows}
+\usepackage{newunicodechar}
+\usepackage[export]{adjustbox}
+
+%\newunicodechar{fi}{fi}
+
+
+\marginsize{1.5cm}{1.5cm}{1.5cm}{1.5cm}
+\sloppy
+\renewcommand{\headrulewidth}{0pt}
+
+\pagestyle{fancy}
+\rhead{CHAPTER 14. COMPTON SCATTERING}
+\lhead{172}
+\cfoot{}
+\setcounter{section}{13}
+
+
+
+\begin{document}
+    %Marcin Flis 17:30 27.05
+    \section{a}
+
+    \begin{equation}
+    \label{14.21}
+    P_{-} = \langle h\nu \rangle \frac{d N}{dt} = c\sigma_{T} u
+    \tag{14.21}
+    \end{equation}
+
+    \begin{equation}
+    \label{14.7}
+    P_{-} = \langle h\nu \rangle \frac{d N}{dt} = c\sigma_{T} u
+    \tag{14.7}
+    \end{equation}
+
+    \begin{equation}
+    \label{14.19}
+    P_{-} = \langle h\nu \rangle \frac{d N}{dt} = c\sigma_{T} u
+    \tag{14.19}
+    \end{equation}
+
+    \newpage
+
+    Now Thomson scattering is independent of frequency of photon, so it follows that the rate at which
+    energy is scattered out of radiation field is given by multiplying $dN/dt$ by the mean energy per
+    photon, to give
+    \begin{equation}
+    \label{14.24}
+    P_{-} = \langle h\nu \rangle \frac{d N}{dt} = c\sigma_{T} u
+    \tag{14.24}
+    \end{equation}
+
+    Note that this is precisely the rate at which energy is scattered for a stationary electron. This is
+    something of a coincidence since we can see from (\ref{14.21}) that the radiation field by moving
+    electron do \textit{not} have an isotrophic distribution in the lab-frame, rather they have a $( 1-
+    \beta \cos \theta)$ distribution, so the photons propagating in the direction opposite to the electron
+    are more likely to be scattered.
+
+    Combining $P_{+} $ from (\ref{14.19}) and $ P_{-}$ form (\ref{14.24}) gives the net
+    \textit{inverse Compton power} for 1 electron of $ P = P_+ - P_- $ or
+
+    \begin{equation}
+    \label{14.25}
+    P = \frac{4}{3} \beta^2 \gamma^2 c \sigma_{T} u
+    \tag{14.25}
+    \end{equation}
+
+    and the total energy transfer rate per unit volume is given by mulitiplying this by the elctron density,
+    or more generally by the distrobution function $ n(\textbf{r},E)$ and intergrating over energy.
+
+    Equation (\ref{14.25}) is remarkably simple, and also ramerkably similar to the synchrotron power
+    and bremsstrahlung power, for reasons already disscussed.
+
+    Interstingly, for low velocities, the Compton power is quadratic in the velocity. There is no first
+    order-effect, since a scatterings may increase or decrease the photon energy.
+
+    \setcounter{subsection}{3}
+    \subsection{Compton vs Inverse Compton Scattering}
+    Equation (\ref{14.25}) is supposedly valid for all electron eneregies, and is clealry always positive.
+    However, this does not make sense. For cold electrons, Compton scattering result in a loss of energy
+    for the elsctrons vis the recoil, which was ignored in deriving (\ref{14.25}).
+
+    For the low eneregy electrons (with $ v/c = \beta \ll 1$), the radiation in the electron frame is very
+    nearly isotropic ($\delta \nu / \nu \sim \beta \ll 1$, so consequently the variation of intensity $\delta
+    I/I \sim \beta \ll 1 $ and is also small, so we can incorpotate the effect of recoil by simply
+    subtracting the meran photon energy loss givern by (\ref{14.7}).
+
+    For $\upsilon \ll c $ mean rate of energy transfer is given by $ dE/ dt \backsimeq (4/3)c \sigma_{T}
+    u \upsilon^2 / c^2 $ while the rate of scatterings is $dN/dt = c \sigma_{T} n = c \sigma_{T} u /
+    \langle \epsilon \rangle $ so the mean photon eneregy gain per collision (neglecting recoil) is $
+    \langle \Delta \epsilon \rangle / \langle \epsilon \rangle = (4/3)(v/c)^2 $, and if $v \ll c $ that is
+    approximately equal to the mean \textit{frractional} energy gain $ \langle \Delta \epsilon /
+    \epsilon \rangle = (4/3)(v/c)^2 $ For a thermal distribution of electrons this becomes $\langle \Delta
+    \epsilon / \epsilon \rangle = 4kT/ mc^2 $. The mean fractional eneregy loss due to recoil if from
+    (\ref{14.7}) $ \Delta \epsilon / \epsilon = \epsilon/ Mc^2 $ so combining these gives
+
+    \begin{equation}
+    \label{14.26}
+    \left\langle \frac{\Delta \epsilon}{\epsilon} \right\rangle = \frac{4kT - h\omega}{m c^2}
+    \tag{14.26}
+    \end{equation}
+
+    It $\epsilon > 4kT $ then there is net transfer of energy to the electrons and \textit{vice versa}.
+
+
+    \subsection{ The Compton $y$- Parameter}
+
+    The \textit{ Compton y-parameter } is defined as
+
+    \begin{equation*}
+    \label{14}
+    y \equiv \left\langle \frac{\Delta \epsilon}{\epsilon} \right\rangle \times \langle \text{number of
+        scatterings} \rangle
+    \end{equation*}
+
+    \begin{itemize}
+        \item In a system with $y$ much less (greater) then unity spactrum will be little (strongly)
+        affected by scattering(s).
+        \item In computing $y$ it is usual to either use the non relativistic expression (\ref{14.26})
+        or the higlhy relativistic limit $ \left \langle \Delta \epsilon / \epsilon \right\rangle \simeq 4
+        \gamma^2 /3 $.
+        \item The mean number of scatterings is given by $ \text{max}(\tau,\tau^2)$.
+    \end{itemize}
+
+\end{document}
